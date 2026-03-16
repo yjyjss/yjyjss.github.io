@@ -1,1 +1,583 @@
-<h1>于佳的主页</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>于佳 · 学术简历（全论文版）</title>
+  <!-- 学术风格：庄重、清晰、简洁 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (免费) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f0f4f8;
+      font-family: 'Source Sans 3', 'Helvetica Neue', sans-serif;
+      color: #1e293b;
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .resume-card {
+      max-width: 1000px;
+      width: 100%;
+      background: white;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+      padding: 2.5rem 3rem;
+      border-radius: 12px;
+    }
+
+    /* 头部：姓名 + 照片 + 基本信息 */
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      border-bottom: 3px solid #0a4b7a;
+      padding-bottom: 1.8rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .photo-area {
+      width: 130px;
+      height: 160px;
+      background: #f1f5f9;
+      border: 3px solid #0a4b7a;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #2c3e50;
+      font-size: 0.9rem;
+      overflow: hidden;
+    }
+
+    .photo-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .photo-placeholder i {
+      font-size: 3.5rem;
+      color: #0a4b7a;
+      margin-bottom: 0.3rem;
+    }
+
+    .photo-placeholder span {
+      background: #0a4b7a;
+      color: white;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+    }
+
+    /* 实际照片（使用时取消注释并替换url） */
+    /*
+    .photo-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    */
+
+    .name-info {
+      flex: 1;
+    }
+
+    .name-info h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #0a2647;
+      margin-bottom: 0.2rem;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #2c3e50;
+      margin-bottom: 0.8rem;
+    }
+
+    .subtitle i {
+      color: #0a4b7a;
+      width: 28px;
+    }
+
+    .basic-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem 2rem;
+      margin-top: 0.8rem;
+    }
+
+    .basic-info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .basic-info-item i {
+      color: #0a4b7a;
+      width: 20px;
+    }
+
+    /* 章节通用 */
+    .section {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #0a2647;
+      border-bottom: 2px solid #dde7f0;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .section-title i {
+      color: #0a4b7a;
+      margin-right: 1rem;
+      font-size: 1.5rem;
+      width: 36px;
+    }
+
+    /* 研究方向标签 */
+    .research-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .research-tag {
+      background: #e6f2ff;
+      color: #0a2647;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-size: 1rem;
+      font-weight: 500;
+      border: 1px solid #b9d4f0;
+    }
+
+    /* 经历条目 */
+    .exp-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      margin-bottom: 1.2rem;
+      border-bottom: 1px dashed #cbd5e1;
+      padding-bottom: 0.8rem;
+    }
+
+    .exp-year {
+      font-weight: 600;
+      color: #0a4b7a;
+    }
+
+    .exp-detail {
+      font-weight: 500;
+    }
+
+    .exp-detail .desc {
+      color: #334155;
+      font-size: 0.95rem;
+      font-weight: 400;
+    }
+
+    /* 项目卡片 */
+    .project-item {
+      margin-bottom: 1.5rem;
+      border-bottom: 1px dashed #cbd5e1;
+      padding-bottom: 1rem;
+    }
+
+    .project-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .project-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #0a2647;
+    }
+
+    .project-role {
+      background: #f1f6fc;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      color: #0a4b7a;
+      font-weight: 600;
+    }
+
+    .project-meta {
+      font-size: 0.95rem;
+      color: #2c3e50;
+      margin-bottom: 0.3rem;
+    }
+
+    /* 论文列表 - 完整版 */
+    .pub-item {
+      display: flex;
+      gap: 1.2rem;
+      margin-bottom: 1.3rem;
+      border-bottom: 1px solid #ecf1f7;
+      padding-bottom: 1rem;
+    }
+
+    .pub-year {
+      min-width: 70px;
+      font-weight: 700;
+      color: #0a4b7a;
+    }
+
+    .pub-detail {
+      font-size: 0.98rem;
+    }
+
+    .pub-title {
+      font-weight: 700;
+      font-style: italic;
+    }
+
+    .pub-journal {
+      color: #2c3e50;
+    }
+
+    .pub-meta {
+      color: #4b6f8f;
+      font-size: 0.9rem;
+      margin-top: 0.2rem;
+      line-height: 1.4;
+    }
+
+    .pub-meta i {
+      margin-right: 0.3rem;
+    }
+
+    .pub-note {
+      display: inline-block;
+      background: #f1f6fc;
+      padding: 0.1rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      margin-left: 0.5rem;
+      color: #0a4b7a;
+      font-weight: 500;
+    }
+
+    @media (max-width: 700px) {
+      .resume-card { padding: 1.5rem; }
+      .header { flex-direction: column; align-items: flex-start; }
+      .exp-item { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="resume-card">
+  <!-- ========= 头部：照片 + 个人信息 ========= -->
+  <div class="header">
+    <!-- 照片区域：默认显示占位符，如需真实照片请替换为img标签 -->
+    <div class="photo-area">
+      <!-- 真实照片使用以下代码（替换url） -->
+      <!-- <img src="your-photo.jpg" alt="于佳照片"> -->
+      <div class="photo-placeholder">
+        <i class="fas fa-user-circle"></i>
+        <span>照片</span>
+      </div>
+    </div>
+    <div class="name-info">
+      <h1>于佳</h1>
+      <div class="subtitle"><i class="fas fa-university"></i> 洛阳理工学院 · 计算机科学与技术 副教授</div>
+      <div class="basic-info">
+        <div class="basic-info-item"><i class="fas fa-venus-mars"></i> 男 · 1980.10</div>
+        <div class="basic-info-item"><i class="fas fa-calendar-alt"></i> 2004.07 参加工作</div>
+        <div class="basic-info-item"><i class="fas fa-graduation-cap"></i> 博士（西北工业大学）</div>
+        <div class="basic-info-item"><i class="fas fa-envelope"></i> yujia@lit.edu.cn</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========= 研究方向 ========= -->
+  <div class="section">
+    <div class="section-title"><i class="fas fa-compass"></i> 研究方向</div>
+    <div class="research-tags">
+      <span class="research-tag">人工智能</span>
+      <span class="research-tag">自然语言处理</span>
+      <span class="research-tag">网络安全</span>
+      <span class="research-tag">机器学习</span>
+      <span class="research-tag">语音/文本分割</span>
+    </div>
+  </div>
+
+  <!-- ========= 教育经历 ========= -->
+  <div class="section">
+    <div class="section-title"><i class="fas fa-user-graduate"></i> 教育经历</div>
+    <div class="exp-item">
+      <div class="exp-year">2000.09 – 2004.06</div>
+      <div class="exp-detail"><strong>中国矿业大学</strong> · 计算机科学与技术 工学学士</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-year">2007.09 – 2010.06</div>
+      <div class="exp-detail"><strong>河南科技大学</strong> · 计算机应用技术 工学硕士</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-year">2013.09 – 2018.12</div>
+      <div class="exp-detail"><strong>西北工业大学</strong> · 计算机科学与技术 工学博士</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-year">2022.03 – 2024.10</div>
+      <div class="exp-detail"><strong>爱尔兰香农理工大学</strong> · 软件研究院 博士后</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-year">2015.01 – 2015.07</div>
+      <div class="exp-detail"><strong>新加坡南洋理工大学</strong> · 计算机学院 助理研究员</div>
+    </div>
+  </div>
+
+  <!-- ========= 项目信息 ========= -->
+  <div class="section">
+    <div class="section-title"><i class="fas fa-flask"></i> 科研项目</div>
+
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-name">欧盟H2020地平线项目“Resilmesh - Securing Cyber Infrastructure”</span>
+        <span class="project-role">主持</span>
+      </div>
+      <div class="project-meta">欧盟自然科学基金委员会 · 2023.01 立项</div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-name">河南省科技攻关“基于GAN和HIHMM的中文及跨语种语音结构事件检测研究” (232102210065)</span>
+        <span class="project-role">主持</span>
+      </div>
+      <div class="project-meta">河南省科技厅 · 2023.01 结项</div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-name">河南省科技攻关“空地一体NOMA异构无线接入网络资源分配关键技术研究” (222102210094)</span>
+        <span class="project-role">主持</span>
+      </div>
+      <div class="project-meta">河南省科技厅 · 2023.09 结项</div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-name">国家自然科学基金项目“协作式移动群体感知数据选择方法研究” (61602230)</span>
+        <span class="project-role">第五</span>
+      </div>
+      <div class="project-meta">国家自然科学基金委员会 · 20万元 · 2020.04 结项</div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-name">河南省高等学校重点科研项目“基于生成对抗网络的故事分割技术研究” (20A520028)</span>
+        <span class="project-role">第五</span>
+      </div>
+      <div class="project-meta">河南省教育厅 · 3万元 · 2022.12 结项</div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-name">发明专利成果转化：混合Hybrid NOMA网络的无人机辅助通信资源分配方法</span>
+        <span class="project-role">主持</span>
+      </div>
+      <div class="project-meta">转化至洛阳魁泰能源有限公司 · 30万 · 2024.10</div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-name">横向项目：基于对抗神经网络的故事分割系统</span>
+        <span class="project-role">主持</span>
+      </div>
+      <div class="project-meta">河南旭佑机电设备有限公司 · 201万 · 2025.03</div>
+    </div>
+  </div>
+
+  <!-- ========= 论文信息（合并评审简表 + 图片，按时间倒序） ========= -->
+  <div class="section">
+    <div class="section-title"><i class="fas fa-file-alt"></i> 代表性论文</div>
+
+    <!-- 2025 -->
+    <div class="pub-item">
+      <div class="pub-year">2025</div>
+      <div class="pub-detail">
+        <span class="pub-title">A topical VAEGAN-IHMM approach for automatic story segmentation</span><br>
+        <span class="pub-journal">Mathematical Biosciences and Engineering, 21(7): 6608-6630, 2025</span>
+        <div class="pub-meta"><i class="fas fa-user"></i> 第一作者: Yu, Jia; Peng, Huiling; Wang, Guoqiang; Shi, Nianfeng · <strong>EI期刊</strong> (评审简表论文4)</div>
+      </div>
+    </div>
+
+    <!-- 2024 (3篇) -->
+    <div class="pub-item">
+      <div class="pub-year">2024</div>
+      <div class="pub-detail">
+        <span class="pub-title">Leveraging machine learning for cybersecurity resilience in industry 4.0: Challenges and future directions</span><br>
+        <span class="pub-journal">IEEE Access, 2024</span>
+        <div class="pub-meta"><i class="fas fa-user"></i> 第一作者: Yu, Jia; Shvetsov, Alexey V.; Alsamhi, Saeed Hamood · <strong>SCI 3区</strong> (图片论文2)</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2024</div>
+      <div class="pub-detail">
+        <span class="pub-title">A Multi-View-Based Federated Learning Approach for Intrusion Detection</span><br>
+        <span class="pub-journal">IEEE Access, 2024</span>
+        <div class="pub-meta"><i class="fas fa-user"></i> 第一作者 · <strong>SCI 3区</strong> (评审简表论文3)</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2024</div>
+      <div class="pub-detail">
+        <span class="pub-title">Efficient Neural Network for Text Recognition in Natural Scenes Based on End-to-End Multi-Scale Attention Mechanism</span><br>
+        <span class="pub-journal">Mathematical Biosciences and Engineering, 2024</span>
+        <div class="pub-meta"><i class="fas fa-user"></i> 第一作者 · <strong>EI收录</strong> (评审简表论文5)</div>
+      </div>
+    </div>
+
+    <!-- 2023 (2篇) -->
+    <div class="pub-item">
+      <div class="pub-year">2023</div>
+      <div class="pub-detail">
+        <span class="pub-title">Efficient Neural Network for Text Recognition in Natural Scenes Based on End-to-End Multi-Scale Attention Mechanism</span><br>
+        <span class="pub-journal">Electronics, 12(6): 1395, 2023</span>
+        <div class="pub-meta"><i class="fas fa-user"></i> 第二作者: Peng, Huiling; <strong>Yu, Jia</strong>; Nie, Yalin · <strong>SCI 3区</strong> (图片论文5)</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2023</div>
+      <div class="pub-detail">
+        <span class="pub-title">基于GTM和多分辨率B样条的医学图像配准方法研究</span><br>
+        <span class="pub-journal">Electronics, 2023</span>
+        <div class="pub-meta"><strong>SCI收录 中科院四区 IF:2.9</strong> (评审简表论文7)</div>
+      </div>
+    </div>
+
+    <!-- 2022 -->
+    <div class="pub-item">
+      <div class="pub-year">2022</div>
+      <div class="pub-detail">
+        <span class="pub-title">Broadcast news story segmentation using sticky hierarchical dirichlet process</span><br>
+        <span class="pub-journal">Applied Intelligence, 52(11): 12788-12800, 2022</span>
+        <div class="pub-meta"><i class="fas fa-user"></i> 第一作者: Yu, Jia; Shao, Hongxiang · <strong>SCI 2区</strong> (图片论文1)</div>
+      </div>
+    </div>
+
+    <!-- 2020 -->
+    <div class="pub-item">
+      <div class="pub-year">2020</div>
+      <div class="pub-detail">
+        <span class="pub-title">基于混合式教学的人工智能微专业建设探索</span><br>
+        <span class="pub-journal">教育现代化, 2020, ISSN:2095-8420</span>
+        <div class="pub-meta">第一作者 · 中文教研论文 (评审简表论文6)</div>
+      </div>
+    </div>
+
+    <!-- 2019 -->
+    <div class="pub-item">
+      <div class="pub-year">2019</div>
+      <div class="pub-detail">
+        <span class="pub-title">大学生信息素养教育</span><br>
+        <span class="pub-journal">现代信息科技, 2019, ISSN:2096-4706</span>
+        <div class="pub-meta">中文教研论文 (评审简表)</div>
+      </div>
+    </div>
+
+    <!-- 2018 -->
+    <div class="pub-item">
+      <div class="pub-year">2018</div>
+      <div class="pub-detail">
+        <span class="pub-title">Learning distributed sentence representations for story segmentation</span><br>
+        <span class="pub-journal">Signal Processing, 142: 403-411, 2018</span>
+        <div class="pub-meta"><i class="fas fa-user"></i> 第一作者: Jia Yu; Xie, Lei; Xiao, Xiong; Chng, Eng Siong · <strong>SCI 2区</strong> (图片论文3)</div>
+      </div>
+    </div>
+
+    <!-- 2017 (3篇) -->
+    <div class="pub-item">
+      <div class="pub-year">2017</div>
+      <div class="pub-detail">
+        <span class="pub-title">A Hybrid Neural Network Hidden Markov Model Approach for Automatic Story Segmentation</span><br>
+        <span class="pub-journal">Journal of Ambient Intelligence and Humanized Computing, 8:925-936, 2017</span>
+        <div class="pub-meta"><i class="fas fa-user"></i> 第一作者: Jia Yu; Xie, Lei; Xiao, Xiong; Chng, Eng Siong · <strong>SCI 4区</strong> (图片论文4)</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2017</div>
+      <div class="pub-detail">
+        <span class="pub-title">Topic Embedding of Sentences for Story Segmentation</span><br>
+        <span class="pub-journal">Proc. APSIPA ASC, 2017: 1163-1166</span>
+        <div class="pub-meta"><i class="fas fa-user"></i> 第一作者: Jia Yu; Xiao, Xiong; Xie, Lei; Chng, Eng Siong · <strong>EI收录</strong> (图片论文7)</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2017</div>
+      <div class="pub-detail">
+        <span class="pub-title">An End-to-End Neural Network Approach to Story Segmentation</span><br>
+        <span class="pub-journal">Proc. APSIPA ASC, 2017: 843-847, Kuala Lumpur, Malaysia</span>
+        <div class="pub-meta"><i class="fas fa-user"></i> 第一作者: Jia Yu; Xie, Lei; Xiao, Xiong; Chng, Eng Siong · <strong>EI收录</strong> (图片论文8)</div>
+      </div>
+    </div>
+
+    <!-- 2016 -->
+    <div class="pub-item">
+      <div class="pub-year">2016</div>
+      <div class="pub-detail">
+        <span class="pub-title">A DNN-HMM Approach to Story Segmentation</span><br>
+        <span class="pub-journal">Proc. INTERSPEECH, 2016: 1527-1531</span>
+        <div class="pub-meta"><i class="fas fa-user"></i> 第一作者: Jia Yu; Xiao, Xiong; Xie, Lei; Chng, Eng Siong; Li, Haizhou · <strong>EI收录 · Best student paper shortlist top 2% · Top Conference</strong> (图片论文9)</div>
+      </div>
+    </div>
+
+    <!-- 2015 -->
+    <div class="pub-item">
+      <div class="pub-year">2015</div>
+      <div class="pub-detail">
+        <span class="pub-title">A Density Peak Clustering Approach to Unsupervised Acoustic Subword Units Discovery</span><br>
+        <span class="pub-journal">Proc. APSIPA ASC, 2015: 178-183</span>
+        <div class="pub-meta"><i class="fas fa-user"></i> 第一作者: Jia Yu; Xie, Lei; Xiao, Xiong; Chng, Eng Siong; Li, Haizhou · <strong>EI收录</strong> (图片论文10)</div>
+      </div>
+    </div>
+
+    <!-- 说明：共收录论文16篇（图片10篇 + 评审简表6篇，去重后实际16篇） -->
+    <div style="margin-top: 0.5rem; font-size:0.9rem; color:#4b6f8f; background: #f8fafd; padding:0.5rem; border-radius:6px;">
+      <i class="fas fa-info-circle"></i> 共收录论文16篇（含SCI 8篇、EI 6篇、中文教研2篇）
+    </div>
+  </div>
+
+  <!-- 极简脚注 -->
+  <div style="margin-top: 1rem; font-size:0.8rem; color:#94a3b8; text-align:right;">
+    <i class="fas fa-sync-alt"></i> 学术简历 · 于佳 2025 · 论文按时间倒序排列
+  </div>
+</div>
+</body>
+</html>
